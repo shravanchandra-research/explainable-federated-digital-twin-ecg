@@ -1,0 +1,33 @@
+EXPERIMENT 3C - PTB-XL DATASET LOADER AND SPLIT VALIDATION
+======================================================================
+Total ECG records: 21799
+Unique patients: 18869
+
+VERIFIED RECORD
+Record: 01000_lr
+ECG ID: 1000
+Patient ID: 4008.0
+Fold: 7
+Filename: records100/01000/01000_lr
+
+EXPERIMENTAL SPLIT
+Training folds: 1-8
+Validation fold: 9
+Test fold: 10
+Training ECGs: 17418
+Validation ECGs: 2183
+Test ECGs: 2198
+
+PATIENT OVERLAP
+Train/Validation: 0
+Train/Test: 0
+Validation/Test: 0
+
+TARGET
+Target vector: [1, 0, 0, 0, 0]
+
+Record identification: PASS
+Waveform loader: PASS
+Target validation: PASS
+Split validation: PASS
+Overall result: PASS

@@ -1,114 +1,80 @@
-# Explainable Federated Digital Twin for Adaptive and Resource-Efficient Multi-Label ECG Classification
+# An Explainable Federated Digital Twin Framework for Adaptive and Resource-Efficient Multi-Label ECG Classification
 
-**Repository status:** Initial research repository scaffold. Source-code implementation and reproducibility materials are not yet deposited.
+**Repository status: partial research-code deposit.** This repository now contains the available PTB-XL dataset inspection, label analysis, preprocessing, split-validation, and HDF5 preparation scripts for Experiments 1A–5A, selected validation logs, and the supplied federated metric JSON summaries. It does not yet contain all code needed to reproduce the paper's model-training, adaptation, and explainability results.
 
-This repository is intended to host the code, configuration, documentation, and selected result artifacts for the research manuscript:
+## Research overview
 
-> *An Explainable Federated Digital Twin Framework for Adaptive and Resource-Efficient Multi-Label ECG Classification*
+The project investigates a simulation-based framework combining multi-label ECG classification, federated learning, a retrospective patient-state adaptation concept, explainability, and resource analysis.
 
-## Research scope
+**Dataset:** PTB-XL v1.0.3, a clinical 12-lead ECG dataset (21,799 records from 18,869 patients). The 100 Hz records contain 1,000 samples per lead over 10 seconds. The five diagnostic superclasses are NORM, MI, STTC, CD, and HYP.
 
-The project investigates a simulation-based framework combining:
+**Patient-preserving split:** folds 1–8 training, fold 9 validation, fold 10 test.
 
-- Multi-label ECG classification using a compact 1D convolutional neural network.
-- Federated training with FedAvg and FedAdam under IID and non-IID client partitions.
-- Patient-level adaptation experiments associated with a retrospective Digital Twin concept.
-- Explainability analysis for model predictions.
-- Analytical estimates of model memory, computation, communication, latency, and energy.
+## Repository contents
 
-The current study uses the PTB-XL 1.0.3 12-lead ECG dataset. The dataset contains 21,799 ECG records from 18,869 patients. Records are represented as 10-second, 12-lead signals; the 100 Hz sampling configuration yields 1,000 samples per lead.
+| Directory | Contents |
+|---|---|
+| `scripts/01_dataset_validation/` | Experiments 1A–1B: waveform and metadata checks |
+| `scripts/02_diagnostic_analysis/` | Experiments 2A–2C: diagnostic codes, superclasses, patient/fold analysis |
+| `scripts/03_initial_preprocessing/` | Experiments 3A–3C: preprocessing, labels, dataset-loader validation |
+| `scripts/04_model_ready_pipeline/` | Experiments 4A–4H: preprocessing, alignment, split/integrity validation, XAI input validation, full dataset preparation |
+| `scripts/05_hdf5_preparation/` | Experiment 5A: HDF5 preparation |
+| `results/validation_logs/` | Supplied text reports for Experiments 1A–3C |
+| `results/federated/` | Four original federated metric JSON summaries |
+| `docs/` | Execution, architecture, experiment inventory and reproducibility statements |
+| `configs/` | Dataset-root configuration guidance |
 
-## Important scope and reproducibility notes
+The included scripts have been syntax-compiled after the portable data-root change. This does not mean that every experiment has been rerun from a clean environment.
 
-This repository must not be interpreted as evidence of clinical deployment or a validated real-time wearable system.
+## Setup and execution
 
-- The Digital Twin component is currently framed as retrospective patient-state replay/adaptation, not a live, continuously synchronized physiological twin.
-- Federated clients in the experiments are simulated partitions, not independently operating hospitals.
-- PTB-XL is a clinical 12-lead ECG dataset; results on it do not establish generalization to single-lead wearable devices.
-- Federated learning by itself does not provide a formal privacy guarantee. Secure aggregation or differential privacy would require separate implementation and evaluation.
-- Latency and energy values derived from assumed throughput and power are scenario estimates, not physical hardware measurements.
-- Result summaries are not a substitute for source code, configuration files, random seeds, environment specifications, and executable instructions.
+1. Download **PTB-XL v1.0.3** from [PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/).
+2. Extract it locally; do not commit the raw dataset to this repository.
+3. Install dependencies using `pip install -r requirements.txt`.
+4. Set `PTBXL_ROOT` to the extracted PTB-XL directory.
+5. Follow the experiment order and prerequisites in [docs/EXECUTION.md](docs/EXECUTION.md).
 
-## Dataset
+For Windows PowerShell:
 
-PTB-XL v1.0.3 is available from PhysioNet:
-
-https://physionet.org/content/ptb-xl/1.0.3/
-
-Dataset DOI: https://doi.org/10.13026/kfzx-aw45
-
-Do not commit restricted, identifiable, or unnecessary copies of patient data. Follow the dataset's access terms and citation requirements.
-
-## Planned repository structure
-
-```text
-.
-├── README.md
-├── CITATION.cff
-├── LICENSE
-├── requirements.txt
-├── configs/
-├── data/
-│   └── README.md
-├── src/
-│   ├── data/
-│   ├── models/
-│   ├── federated/
-│   ├── adaptation/
-│   ├── explainability/
-│   └── profiling/
-├── experiments/
-├── results/
-│   └── README.md
-├── figures/
-├── tests/
-└── docs/
+```powershell
+$env:PTBXL_ROOT = "C:\PTB-XL"
+python scripts/01_dataset_validation/experiment_1a_ptbxl_verify.py
 ```
 
-This is a planned structure; directories and implementation files will be added as the actual research code is prepared. No placeholder script is presented as an implemented experiment.
+See [docs/EXPERIMENT_MAP.md](docs/EXPERIMENT_MAP.md) for the current coverage and [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) for limitations.
 
-## Experimental design (reported in the manuscript)
+## Federated result summaries supplied with the project
 
-The reported federated configurations compare FedAvg and FedAdam under IID and non-IID data allocation. The five multi-label diagnostic superclasses are:
-
-- NORM — Normal ECG
-- MI — Myocardial infarction
-- STTC — ST/T change
-- CD — Conduction disturbance
-- HYP — Hypertrophy
-
-The patient-preserving split uses folds 1–8 for training, fold 9 for validation, and fold 10 for testing.
-
-## Reported federated summary
-
-The following values are transcribed from the experiment JSON summaries used during manuscript preparation. They have not yet been independently reproduced from code deposited in this repository.
-
-| Client allocation | Optimizer | Global Macro-F1 | Global Macro-AUROC | Population SD of client F1 |
+| Allocation | Optimizer | Global Macro-F1 | Global Macro-AUROC | Client F1 population SD |
 |---|---|---:|---:|---:|
 | IID | FedAvg | 0.844234 | 0.964234 | 0.046933 |
 | IID | FedAdam | 0.893406 | 0.990000 | 0.045312 |
 | Non-IID | FedAvg | 0.738362 | 0.858362 | 0.021576 |
 | Non-IID | FedAdam | 0.788362 | 0.908362 | 0.021576 |
 
-A centralized reference is mentioned in the manuscript, but a validated centralized score has not been supplied for this README and is therefore not reported here.
+These values are copied from the supplied experiment JSON summaries into `results/federated/`. They are **reported artifacts, not independently reproduced by the scripts currently deposited here**. The consolidated archive did not contain the training implementation or prediction-level outputs used to recompute these metrics. No centralized score is reported because a validated value was not supplied.
 
-## Current limitations of this deposit
+## Critical scope and limitations
 
-At the time of this initial commit, the repository does **not** contain the actual Python source files or notebooks required to reproduce the experiments. The earlier consolidated archive reviewed during preparation contained experiment result JSON/CSV files and plots, but no `.py` files or `.ipynb` notebooks. Consequently:
+- This is a simulation study, not a clinical deployment or prospective validation.
+- The Digital Twin component is retrospective patient-state replay/adaptation, not a live synchronized physiological twin.
+- Federated clients are simulated data partitions, not independently operating hospitals.
+- Federated learning alone does not establish formal privacy. Secure aggregation or differential privacy would need separate implementation and evaluation.
+- PTB-XL is clinical 12-lead ECG; this dataset does not establish single-lead wearable generalization.
+- Reported latency/energy estimates based on assumed throughput and power are scenario estimates, not physical hardware measurements.
+- Experiment 4G validates XAI input readiness; it is not itself an explanation-generation or XAI faithfulness experiment.
+- Centralized CNN training, FedAvg/FedAdam training, patient adaptation, explanation generation/evaluation, and complete resource-profiling source code are not yet included.
 
-- No end-to-end reproduction claim is made.
-- No installation or execution command is given until dependencies and entry points are confirmed from the actual code.
-- Explainability metrics/plots, centralized baseline results, and detailed adaptation statistics should only be added when their underlying validated artifacts are available.
+## Dataset citation
 
-## Citation
+Wagner, P. et al. (2020). *PTB-XL, a large publicly available electrocardiography dataset*. Scientific Data. Dataset version 1.0.3: [PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/), [DOI](https://doi.org/10.13026/kfzx-aw45).
 
-Please cite the associated manuscript when it is published. The formal citation and DOI will be added here after publication. The repository's versioned archive DOI will be added after a release is archived.
+## Citation and license
 
-## Contact
+See [CITATION.cff](CITATION.cff). The manuscript DOI and archived software release DOI will be added only after they have actually been assigned.
 
-Repository maintainer: **Shravanchandra G**  
-GitHub: https://github.com/shravanchandra-research
+**No open-source license has been granted yet.** Public visibility does not itself grant reuse rights. See [LICENSE_STATUS.md](LICENSE_STATUS.md). A license must be approved by the code contributors before publication under an open-source license.
 
-## License
+## Maintainer
 
-No license has been selected yet. Until a license file is added, all rights are reserved by the respective copyright holder; do not assume that the contents may be reused or redistributed.
+Shravanchandra G — [GitHub profile](https://github.com/shravanchandra-research)

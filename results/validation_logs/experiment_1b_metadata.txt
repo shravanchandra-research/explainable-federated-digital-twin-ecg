@@ -1,0 +1,16 @@
+EXPERIMENT 1B - PTB-XL METADATA VERIFICATION
+============================================================
+
+ECG ID: 1000
+Patient ID: 4008.0
+Filename: records100/01000/01000_lr
+Age: 53.0
+Sex: 0
+SCP codes: {'NORM': 100.0, 'SR': 0.0}
+Recommended fold: 7
+
+Total ECG records: 21799
+Unique patients: 18869
+Number of folds: 10
+
+VERIFICATION: PASS

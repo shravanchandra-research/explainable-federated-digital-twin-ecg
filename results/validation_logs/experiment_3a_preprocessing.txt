@@ -1,0 +1,25 @@
+EXPERIMENT 3A - PTB-XL ECG PREPROCESSING PIPELINE
+======================================================================
+Record: 01000_lr
+Sampling frequency: 100 Hz
+Number of leads: 12
+Number of samples: 1000
+Raw shape: (1000, 12)
+Processed shape: (1000, 12)
+Raw NaN values: 0
+Raw infinite values: 0
+Processed NaN values: 0
+Processed infinite values: 0
+Maximum absolute normalized lead mean: 4.3690204165613977e-07
+Maximum deviation from unit standard deviation: 7.748603820800781e-07
+Normalization validation: PASS
+
+PREPROCESSING STEPS
+1. Loaded PTB-XL ECG using WFDB.
+2. Validated raw ECG values.
+3. Centered each lead by subtracting its mean.
+4. Standardized each lead using its standard deviation.
+5. Verified numerical integrity.
+6. Verified model input dimensions.
+
+OVERALL RESULT: PASS

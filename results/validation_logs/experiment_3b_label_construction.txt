@@ -1,0 +1,32 @@
+EXPERIMENT 3B - MODEL-READY MULTI-LABEL TARGET CONSTRUCTION
+======================================================================
+Total ECG records: 21799
+Unique patients: 18869
+Diagnostic SCP codes: 44
+Mapped diagnostic codes: 44
+
+MODEL TARGET ORDER:
+[NORM, MI, STTC, CD, HYP]
+
+CLASS COUNTS:
+NORM: 9514 (43.64%)
+MI: 5469 (25.09%)
+STTC: 5235 (24.01%)
+CD: 4898 (22.47%)
+HYP: 2649 (12.15%)
+
+NONE records: 411
+Duplicate ECG IDs: 0
+Cross-fold patients: 0
+Parse failures: 0
+Label validation: PASS
+Parsing validation: PASS
+Experiment 2B consistency: PASS
+
+TARGET EXAMPLES:
+NORM -> [1, 0, 0, 0, 0]
+MI -> [0, 1, 0, 0, 0]
+CD + MI + STTC -> [0, 1, 1, 1, 0]
+NONE -> [0, 0, 0, 0, 0]
+
+OVERALL RESULT: PASS

@@ -1,7 +1,9 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite the associated manuscript and its archived release when available."
+message: "If you use this repository, please cite the associated manuscript and the archived software release when available."
 title: "An Explainable Federated Digital Twin Framework for Adaptive and Resource-Efficient Multi-Label ECG Classification"
 authors:
   - family-names: "G"
     given-names: "Shravanchandra"
+  - family-names: "Henge"
+    given-names: "Santosh Kumar"
 repository-code: "https://github.com/shravanchandra-research/explainable-federated-digital-twin-ecg"

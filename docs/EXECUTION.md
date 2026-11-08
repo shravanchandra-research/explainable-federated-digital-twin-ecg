@@ -1,8 +1,8 @@
 # Execution guide
 
-## 1. Prepare the environment
+## 1. Environment
 
-Use a supported Python installation and create an isolated virtual environment.
+Use an isolated Python environment.
 
 ### Windows PowerShell
 
@@ -24,26 +24,31 @@ pip install -r requirements.txt
 export PTBXL_ROOT="/path/to/PTB-XL"
 ```
 
-Download PTB-XL v1.0.3 from [PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/) and extract it under the directory referenced by `PTBXL_ROOT`. That directory should contain `ptbxl_database.csv`, `scp_statements.csv`, `RECORDS`, and `records100/`.
+Download PTB-XL v1.0.3 from [PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/) and extract it under `PTBXL_ROOT`. The configured directory must contain `ptbxl_database.csv`, `scp_statements.csv`, `RECORDS`, and `records100/`. Raw dataset files are not part of this repository.
 
-Do not place the downloaded dataset under version control.
+## 2. Dataset inspection and initial analysis
 
-## 2. Run the experiments
-
-Run scripts from the repository root. Example:
+Run commands from the repository root:
 
 ```powershell
-python scripts/01_dataset_verification/experiment_1a_ptbxl_verify.py
-python scripts/01_dataset_verification/experiment_1b_ptbxl_metadata.py
+python scripts/01_dataset_validation/experiment_1a_ptbxl_verify.py
+python scripts/01_dataset_validation/experiment_1b_ptbxl_metadata.py
 python scripts/02_diagnostic_analysis/experiment_2a_label_analysis.py
 python scripts/02_diagnostic_analysis/experiment_2b_superclass_analysis.py
 python scripts/02_diagnostic_analysis/experiment_2c_patient_fold_analysis.py
+```
+
+## 3. Initial preprocessing
+
+```powershell
 python scripts/03_initial_preprocessing/experiment_3a_preprocessing.py
 python scripts/03_initial_preprocessing/experiment_3b_label_construction.py
 python scripts/03_initial_preprocessing/experiment_3c_dataset_loader.py
 ```
 
-Experiments 4A–4G are staged data-preparation and validation scripts. Run them in order after the required source records and prior-stage output files are present:
+## 4. Model-ready data pipeline
+
+These scripts are staged and depend on source records and outputs from prior steps. Run in order:
 
 ```powershell
 python scripts/04_model_ready_pipeline/experiment_4a_preprocessing.py
@@ -55,21 +60,27 @@ python scripts/04_model_ready_pipeline/experiment_4f_split_integrity.py
 python scripts/04_model_ready_pipeline/experiment_4g_xai_input_validation.py
 ```
 
-For full-dataset preparation, run 4H and then 5A:
+Experiment 4G is an **XAI input-integrity validator**; it does not generate explanations or compute explanation faithfulness/stability.
+
+## 5. Full dataset preparation and HDF5 conversion
 
 ```powershell
 python scripts/04_model_ready_pipeline/experiment_4h_full_preprocessing.py
 python scripts/05_hdf5_preparation/experiment_5a_prepare_hdf5.py
 ```
 
-## 3. Outputs
+These stages require the complete local PTB-XL 100 Hz waveform collection and adequate local disk space.
 
-The scripts write working files and reports below the PTB-XL root directory, mainly in its `experiments/` subdirectory. These are local generated outputs and are not automatically uploaded to GitHub.
+## 6. Syntax test
 
-## 4. Important cautions
+```bash
+python -m unittest discover -s tests
+```
 
-- The scripts are supplied research-stage scripts, not a single fully automated pipeline. Some stages depend on files created by earlier stages.
-- Full-dataset preprocessing and HDF5 conversion require the complete PTB-XL v1.0.3 100 Hz waveform collection and adequate local disk space.
-- The 4G script validates data inputs for subsequent XAI experiments; it does not calculate explanations.
-- The deposited requirements file is not a historical lockfile. Exact versions beyond WFDB 4.3.1 have not been established from the available run records.
-- Inspect generated indexes and error reports before training any model.
+This checks Python syntax for all deposited experiment scripts. It does not execute experiments against PTB-XL.
+
+## 7. Outputs and caveats
+
+Scripts write reports, arrays, indexes, and HDF5 artifacts under the local PTB-XL root, generally in its `experiments/` directory. Generated patient-level data are not automatically copied to GitHub.
+
+The deposited source is a research-stage pipeline, not a single end-to-end command. Review each script's prerequisites and inspect generated indexes/error reports before using data for model training. The requirements file is not a historical lockfile; only WFDB 4.3.1 is pinned based on the version recorded in the workflow.

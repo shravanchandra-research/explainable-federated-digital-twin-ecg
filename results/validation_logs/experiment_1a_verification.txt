@@ -1,0 +1,41 @@
+EXPERIMENT 1A - PTB-XL ECG WAVEFORM VERIFICATION
+============================================================
+
+Record name: 01000_lr
+Number of leads: 12
+Samples per lead: 1000
+Sampling frequency: 100 Hz
+Duration: 10.0 seconds
+
+Lead names:
+- I
+- II
+- III
+- AVR
+- AVL
+- AVF
+- V1
+- V2
+- V3
+- V4
+- V5
+- V6
+
+Signal validation:
+NaN values: 0
+Infinite values: 0
+Minimum value: -0.888
+Maximum value: 1.5
+Mean value: 0.0004995833333333384
+Standard deviation: 0.17644539381867239
+
+Structural verification:
+12 leads: PASS
+100 Hz: PASS
+1000 samples: PASS
+10 seconds: PASS
+Expected lead names: PASS
+No NaN: PASS
+No Inf: PASS
+
+OVERALL VERIFICATION: PASS

@@ -1,13 +1,8 @@
-# Results
+# Results and provenance
 
-Only validated, traceable result artifacts should be added here.
+- `validation_logs/`: supplied text logs from Experiments 1A–3C.
+- `federated/FedAvg/` and `federated/FedAdam/`: original JSON metric summaries for IID and non-IID partitions.
 
-For each result, preserve:
-- experiment/configuration identifier;
-- dataset version and split definition;
-- random seed(s), client allocation, optimizer and training settings;
-- metric definitions and aggregation procedure;
-- originating script/notebook and software environment;
-- clear distinction between measured values and scenario-derived estimates.
+The four JSON files were copied from the supplied consolidated research archive. They have not been regenerated from deposited training code. Since model training implementations, full configs/seeds, and prediction-level outputs are absent, the federated metrics cannot be independently recomputed from this deposit.
 
-The top-level README currently transcribes the federated summary from experiment JSON files used during manuscript preparation. Those results have not yet been independently reproduced from code deposited in this repository.
+Do not commit raw PTB-XL waveforms, patient-identifiable data, private metadata, checkpoints, or unreviewed generated outputs.

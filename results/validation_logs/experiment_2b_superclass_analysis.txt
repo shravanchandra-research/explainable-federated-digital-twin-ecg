@@ -1,0 +1,55 @@
+EXPERIMENT 2B - PTB-XL DIAGNOSTIC SUPERCLASS ANALYSIS
+============================================================
+
+Total ECG records: 21799
+Unique patients: 18869
+
+Superclass counts:
+NORM: 9514 (43.64%)
+MI: 5469 (25.09%)
+STTC: 5235 (24.01%)
+CD: 4898 (22.47%)
+HYP: 2649 (12.15%)
+
+Multi-label statistics:
+Zero classes: 411
+One class: 16244
+Two classes: 4068
+Three or more: 1076
+Maximum classes: 4
+
+Top combinations:
+diagnostic_classes
+NORM              9069
+MI                2532
+STTC              2400
+CD                1708
+CD+MI             1297
+HYP+STTC           781
+MI+STTC            599
+HYP                535
+CD+STTC            471
+NONE               411
+CD+NORM            407
+HYP+MI+STTC        361
+CD+HYP             300
+CD+MI+STTC         223
+CD+HYP+STTC        211
+HYP+MI             183
+CD+HYP+MI+STTC     156
+CD+HYP+MI          117
+NORM+STTC           28
+CD+NORM+STTC         5
+
+Fold distribution:
+ fold  records  NORM  MI  STTC  CD  HYP
+    1     2175   940 549   526 481  263
+    2     2181   967 538   524 485  264
+    3     2192   991 528   515 487  264
+    4     2174   927 551   527 494  261
+    5     2174   939 563   532 496  265
+    6     2173   930 562   528 494  270
+    7     2176   970 550   520 478  264
+    8     2173   932 538   514 492  268
+    9     2183   955 540   528 495  268
+   10     2198   963 550   521 496  262

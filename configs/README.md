@@ -1,17 +1,17 @@
 # Configuration
 
-The deposited preprocessing scripts use the `PTBXL_ROOT` environment variable to locate the local PTB-XL v1.0.3 directory.
+The deposited scripts read the PTB-XL root from the `PTBXL_ROOT` environment variable. If it is not set, the original Windows path `C:\PTB-XL` is retained as a fallback for compatibility with the original experiment environment.
 
-Set it before running any experiment, for example in Windows PowerShell:
+Windows PowerShell:
 
 ```powershell
 $env:PTBXL_ROOT = "C:\PTB-XL"
 ```
 
-or Linux/macOS:
+Linux/macOS:
 
 ```bash
 export PTBXL_ROOT="/path/to/PTB-XL"
 ```
 
-The model-training, federated-learning, adaptation, and explanation-generation configurations are not included because their implementation/configuration files were not present in the available source package.
+The centralized model, federated training, adaptation, explanation-generation, and resource-profiling configuration files are not available in this deposit.

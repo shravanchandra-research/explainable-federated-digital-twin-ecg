@@ -1,0 +1,42 @@
+EXPERIMENT 2C - PTB-XL PATIENT/FOLD INTEGRITY ANALYSIS
+======================================================================
+Total ECG records: 21799
+Unique patients: 18869
+Patients with multiple ECGs: 2111
+Patients appearing in multiple folds: 0
+
+ECG COUNT BY FOLD
+Fold 1: 2175
+Fold 2: 2181
+Fold 3: 2192
+Fold 4: 2174
+Fold 5: 2174
+Fold 6: 2173
+Fold 7: 2176
+Fold 8: 2173
+Fold 9: 2183
+Fold 10: 2198
+
+UNIQUE PATIENT COUNT BY FOLD
+Fold 1: 1878
+Fold 2: 1849
+Fold 3: 1887
+Fold 4: 1883
+Fold 5: 1890
+Fold 6: 1884
+Fold 7: 1871
+Fold 8: 1881
+Fold 9: 1942
+Fold 10: 1904
+
+PATIENT ECG DISTRIBUTION
+1 ECG: 16758
+2 ECGs: 1590
+3 ECGs: 350
+4 ECGs: 99
+5+ ECGs: 72
+Maximum ECGs per patient: 10
+
+CONCLUSION:
+Patient-level leakage must be considered when designing
+training, validation, and test splits.
