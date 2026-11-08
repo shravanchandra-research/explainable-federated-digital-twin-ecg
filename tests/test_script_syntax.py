@@ -1,18 +1,25 @@
-"""Lightweight syntax test for deposited experiment scripts; does not run data-dependent experiments."""
+"""Syntax checks for all experiment scripts and reference package modules."""
 from pathlib import Path
 import py_compile
 import unittest
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-SCRIPT_ROOT = REPO_ROOT / "scripts"
+ROOT=Path(__file__).resolve().parents[1]
+SCRIPT_ROOT=ROOT/"scripts"
+SOURCE_ROOT=ROOT/"src"/"efdt"
 
-class ExperimentScriptSyntaxTests(unittest.TestCase):
-    def test_all_deposited_experiment_scripts_compile(self):
-        scripts = sorted(SCRIPT_ROOT.rglob("experiment_*.py"))
-        self.assertEqual(len(scripts), 17, "Update this expected count when adding/removing experiment scripts.")
-        for script in scripts:
-            with self.subTest(script=script.relative_to(REPO_ROOT).as_posix()):
-                py_compile.compile(str(script), doraise=True)
+class SourceSyntaxTests(unittest.TestCase):
+    def test_all_17_experiment_scripts_compile(self):
+        files=sorted(SCRIPT_ROOT.rglob("experiment_*.py"))
+        self.assertEqual(len(files),17)
+        for path in files:
+            with self.subTest(file=path.relative_to(ROOT).as_posix()):
+                py_compile.compile(str(path),doraise=True)
 
-if __name__ == "__main__":
-    unittest.main()
+    def test_all_reference_package_modules_compile(self):
+        files=sorted(SOURCE_ROOT.rglob("*.py"))
+        self.assertGreaterEqual(len(files),10)
+        for path in files:
+            with self.subTest(file=path.relative_to(ROOT).as_posix()):
+                py_compile.compile(str(path),doraise=True)
+
+if __name__=="__main__": unittest.main()
