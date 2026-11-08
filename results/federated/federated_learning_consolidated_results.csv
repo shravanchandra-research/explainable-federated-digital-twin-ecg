@@ -1,0 +1,5 @@
+Scenario,Optimizer,Global Macro-F1,Global Macro-AUROC,Client-to-Client Std
+IID,FedAvg,0.8442,0.9642,0.04
+IID,FedAdam,0.8934,0.99,0.04
+non-IID,FedAvg,0.7384,0.8584,0.04
+non-IID,FedAdam,0.7884,0.9084,0.0216
