@@ -997,4 +997,50 @@ for fold in sorted(
 
     print(
         "  Fold {:2d}: {}".format(
-            fold,
+            fold,            fold_counts[fold]
+        )
+    )
+
+
+# ============================================================
+# OUTPUT REPORT
+# ============================================================
+
+print()
+print(
+    "Alignment report:"
+)
+
+print(
+    alignment_file
+)
+
+
+# ============================================================
+# FINAL RESULT
+# ============================================================
+
+if (
+    successful == len(df_selected)
+    and failed == 0
+    and missing_preprocessed == 0
+    and load_errors == 0
+    and shape_errors == 0
+    and finite_errors == 0
+    and record_identity_errors == 0
+    and patient_errors == 0
+    and label_errors == 0
+    and fold_errors == 0
+):
+
+    print()
+    print("=" * 70)
+    print("EXPERIMENT 4D RESULT : PASS")
+    print("=" * 70)
+
+else:
+
+    print()
+    print("=" * 70)
+    print("EXPERIMENT 4D RESULT : REVIEW REQUIRED")
+    print("=" * 70)
