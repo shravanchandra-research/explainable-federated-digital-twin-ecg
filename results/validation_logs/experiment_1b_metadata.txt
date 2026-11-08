@@ -1,0 +1,12 @@
+EXPERIMENT 1B - PTB-XL METADATA VERIFICATION (SANITIZED AGGREGATE SUMMARY)
+============================================================================
+
+Dataset version: PTB-XL 1.0.3
+Total ECG records: 21799
+Unique patients: 18869
+Number of folds: 10
+
+Record-level identifiers, demographics, and diagnostic metadata are intentionally
+excluded from this public validation summary.
+
+AGGREGATE VERIFICATION: PASS
