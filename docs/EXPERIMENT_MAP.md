@@ -5,7 +5,7 @@ The repository contains source scripts for Experiments 1A–5A. All 17 scripts w
 | Stage | Repository script | Purpose | Evidence/status |
 |---|---|---|---|
 | 1A | `scripts/01_dataset_validation/experiment_1a_ptbxl_verify.py` | Verify a 12-lead, 100 Hz waveform | Supplied log reports PASS for record 01000_lr |
-| 1B | `scripts/01_dataset_validation/experiment_1b_ptbxl_metadata.py` | Inspect metadata and SCP codes | Supplied log is included |
+| 1B | `scripts/01_dataset_validation/experiment_1b_ptbxl_metadata.py` | Inspect metadata and SCP codes | Sanitized aggregate summary included; record-level identifiers and demographics excluded |
 | 2A | `scripts/02_diagnostic_analysis/experiment_2a_label_analysis.py` | Analyze diagnostic SCP codes | Supplied log is included |
 | 2B | `scripts/02_diagnostic_analysis/experiment_2b_superclass_analysis.py` | Map codes to NORM, MI, STTC, CD, HYP | Supplied log is included |
 | 2C | `scripts/02_diagnostic_analysis/experiment_2c_patient_fold_analysis.py` | Analyze patient/fold integrity | Supplied log reports no patient crossing folds |
