@@ -997,4 +997,166 @@ print(
 )
 
 print(
-    "Metadata records              :",
+    "Metadata records              :",    total_records
+)
+
+print(
+    "Records in final index        :",
+    records_in_index
+)
+
+print(
+    "Newly processed               :",
+    processed_count
+)
+
+print(
+    "Skipped valid existing        :",
+    skipped_count
+)
+
+print(
+    "Failed records                :",
+    failed_count
+)
+
+print(
+    "Duplicate ECG IDs             :",
+    duplicate_ecg
+)
+
+print(
+    "Missing processed files       :",
+    missing_processed
+)
+
+print(
+    "Invalid shapes                :",
+    invalid_shapes
+)
+
+print(
+    "Invalid finite values         :",
+    invalid_finite
+)
+
+print(
+    "Shape errors                  :",
+    shape_errors
+)
+
+print(
+    "NaN/Inf errors                :",
+    nan_errors
+)
+
+print(
+    "Normalization errors          :",
+    normalization_errors
+)
+
+print(
+    "Label errors                  :",
+    label_errors
+)
+
+print(
+    "\nDataset split:"
+)
+
+print(
+    "  Training                    :",
+    train_count
+)
+
+print(
+    "  Validation                 :",
+    validation_count
+)
+
+print(
+    "  Test                       :",
+    test_count
+)
+
+print(
+    "\nDiagnostic superclass counts:"
+)
+
+for target in TARGET_CLASSES:
+
+    print(
+        f"  {target:5s}:",
+        class_counts[target]
+    )
+
+print(
+    "\nPreprocessed dataset:"
+)
+
+print(
+    PREPROCESSED_DIR
+)
+
+print(
+    "\nFull model-ready index:"
+)
+
+print(
+    INDEX_FILE
+)
+
+print(
+    "\nError report:"
+)
+
+print(
+    ERROR_FILE
+)
+
+# ============================================================
+# PASS CONDITION
+# ============================================================
+
+pass_condition = (
+
+    total_records == 21799
+
+    and records_in_index == 21799
+
+    and duplicate_ecg == 0
+
+    and missing_processed == 0
+
+    and invalid_shapes == 0
+
+    and invalid_finite == 0
+
+    and failed_count == 0
+
+    and train_count == 17418
+
+    and validation_count == 2183
+
+    and test_count == 2198
+)
+
+print(
+    "\n" + "=" * 70
+)
+
+if pass_condition:
+
+    print(
+        "EXPERIMENT 4H RESULT : PASS"
+    )
+
+else:
+
+    print(
+        "EXPERIMENT 4H RESULT : REVIEW"
+    )
+
+print(
+    "=" * 70
+)
