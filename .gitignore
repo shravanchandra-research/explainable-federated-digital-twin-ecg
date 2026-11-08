@@ -19,19 +19,24 @@ ENV/
 credentials.*
 secrets.*
 
-# PTB-XL raw data and locally generated data
+# PTB-XL raw dataset and local source metadata
+/ptbxl_database.csv
+/scp_statements.csv
+/RECORDS
+/records100/
+/ptb-xl-1.0.3.zip
+/data/PTB-XL/
 /data/ptb-xl/
-data/ptb-xl/
 *.dat
 *.hea
+
+# Generated/derived local data and checkpoints
 *.npy
 *.h5
 *.hdf5
 *.pt
 *.pth
 *.ckpt
-
-# Generated experiment outputs (keep curated, reviewed artifacts under repository results/)
 experiments/
 outputs/
 runs/
