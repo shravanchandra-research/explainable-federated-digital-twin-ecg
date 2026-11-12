@@ -1,0 +1,78 @@
+{
+  "experiment_id": null,
+  "experiment_name": null,
+  "run_timestamp_utc": null,
+  "git_commit": null,
+  "git_branch_or_tag": null,
+  "dataset": {
+    "name": "PTB-XL",
+    "version": "1.0.3",
+    "preprocessed_artifact": null,
+    "split": {
+      "train_folds": [1, 2, 3, 4, 5, 6, 7, 8],
+      "validation_folds": [9],
+      "test_folds": [10]
+    },
+    "class_order": ["NORM", "MI", "STTC", "CD", "HYP"]
+  },
+  "model": {
+    "architecture": null,
+    "parameter_count": null,
+    "checkpoint_path_or_uri": null,
+    "checkpoint_sha256": null
+  },
+  "training": {
+    "seed": null,
+    "optimizer": null,
+    "learning_rate": null,
+    "batch_size": null,
+    "epochs": null,
+    "early_stopping": null,
+    "threshold_selection": null
+  },
+  "federated": {
+    "enabled": false,
+    "client_count": null,
+    "allocation": null,
+    "partition_method": null,
+    "dirichlet_alpha": null,
+    "rounds": null,
+    "local_epochs": null,
+    "participation_rate": null,
+    "aggregation": null
+  },
+  "adaptation": {
+    "enabled": false,
+    "eligible_patient_count": null,
+    "support_query_protocol": null
+  },
+  "explainability": {
+    "enabled": false,
+    "method": null,
+    "baseline": null,
+    "integration_steps": null,
+    "faithfulness_protocol": null,
+    "stability_protocol": null
+  },
+  "resource_profile": {
+    "enabled": false,
+    "device": null,
+    "measurement_type": null,
+    "throughput_mmac_per_s_assumption": null,
+    "power_w_assumption": null
+  },
+  "environment": {
+    "python": null,
+    "pytorch": null,
+    "operating_system": null,
+    "accelerator": null,
+    "dependency_lock_or_export": null
+  },
+  "outputs": {
+    "metrics": [],
+    "predictions": [],
+    "logs": [],
+    "figures": []
+  },
+  "notes_and_deviations": null
+}
