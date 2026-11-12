@@ -1,10 +1,10 @@
 # Result validation and provenance
 
-The project owner confirms that the outputs retained from the consolidated EFDT result archive are validated project results. The original JSON metrics, CSV and figures are carried forward without editing the historical values.
+The project owner confirms that the four federated JSON outputs retained in this repository are validated project results. Their metric values are preserved unchanged.
 
 ## Federated outputs
 
-Four JSON files are included under `results/federated/`: FedAvg/IID, FedAvg/non-IID, FedAdam/IID and FedAdam/non-IID. Each JSON contains ten client-level F1 values, global Macro-F1, global Macro-AUROC, client-to-client population standard deviation, transmitted data and average training time per round.
+Four JSON files are included under `results/federated/`: FedAvg/IID, FedAvg/non-IID, FedAdam/IID and FedAdam/non-IID. Each JSON contains ten client-level F1 values and summary metrics.
 
 | Allocation | Optimizer | Global Macro-F1 | Global Macro-AUROC | Client F1 population SD |
 |---|---|---:|---:|---:|
@@ -15,9 +15,13 @@ Four JSON files are included under `results/federated/`: FedAvg/IID, FedAvg/non-
 
 Client standard deviations are calculated across ten client-level F1 values using the population convention; they are not standard deviations across independent training seeds. The exact-precision CSV is computed from the JSON source values.
 
+## Centralized baseline
+
+The manuscript reports Macro-F1 0.901240 and Macro-AUROC 0.991450, and the project authors state that these experiments were performed. However, the corresponding centralized metrics, predictions, configuration and run log are not currently deposited in this Git repository. The folder `results/centralized/` is reserved for the original artifacts. The repository should not be described as independently reproducing these values until those artifacts and their provenance are added.
+
 ## Patient adaptation
 
-The supplied patient-adaptation plot is stored in the complete research package. The documented mean MI F1 change is −0.076190. The remaining class distributions are interpreted descriptively; exact per-class summaries are not invented where raw values are not available.
+The project records document a mean MI F1 change of −0.076190. The class-wise adaptation plot and raw paired patient-level values are not currently present in this Git tree. Exact per-class medians, IQRs, patient counts or confidence intervals must not be inferred from an absent plot or rounded prose. Deposit the original paired values and analysis script under `results/adaptation/` when available.
 
 ## Dataset and preprocessing validation
 
@@ -29,6 +33,6 @@ The specified 1D CNN has 14,581 trainable parameters and 1,309,760 MACs per 12-l
 
 ## Software tests
 
-The complete package test suite includes seven reference tests plus a syntax test compiling all 17 experiment scripts. It verifies the model shape/parameter count, HDF5 contract and fold routing, patient-preserving client partitioning, multi-label metrics, Integrated Gradients, analytical resource equations and retrospective state replay. Install `requirements-reference.txt`, run `pip install -e .`, and execute `python -m unittest discover -s tests -v`.
+The package test suite includes seven reference tests plus a syntax test compiling all 17 experiment scripts. It verifies the model shape/parameter count, HDF5 contract and fold routing, patient-preserving client partitioning, multi-label metrics, Integrated Gradients, analytical resource equations and retrospective state replay. Install `requirements-reference.txt`, run `pip install -e .`, and execute `python -m unittest discover -s tests -v`.
 
-The original result JSONs are retained as supplied and are not rewritten by new reference-implementation runs. The consolidated result archive does not report centralized baseline Macro-F1/Macro-AUROC values; none are inferred.
+The supplied federated JSONs are retained as provided and are not rewritten by new reference-implementation runs.
