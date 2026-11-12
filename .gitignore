@@ -37,7 +37,10 @@ secrets.*
 *.pt
 *.pth
 *.ckpt
-experiments/
+experiments/*
+!experiments/README.md
+!experiments/**/
+!experiments/**/README.md
 outputs/
 runs/
 tensorboard/
