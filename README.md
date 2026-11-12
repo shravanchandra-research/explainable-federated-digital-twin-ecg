@@ -59,7 +59,7 @@ These are preserved project result artifacts. Client population SD describes dis
 
 ### Other manuscript quantities and evidence status
 
-- Patient adaptation: the supplied archive documents a mean MI F1 change of −0.076190 and retains a class-wise adaptation plot. Deposit the original patient-level paired CSV and its generating script before claiming exact class-wise medians/IQRs as reproducible.
+- Patient adaptation: project records document a mean MI F1 change of −0.076190. The raw paired patient-level CSV and class-wise adaptation plot are not currently present in this Git tree. Deposit the original values and generating script before claiming exact class-wise medians/IQRs as reproducible.
 - Centralized baseline: the manuscript reports Macro-F1 0.901240 and Macro-AUROC 0.991450. The currently deposited historical result archive does not yet contain the corresponding centralized predictions/metrics artifact. Deposit the original evaluation output, test predictions, configuration and checkpoint provenance when available. Do not imply that the repository currently reproduces this value.
 - Model complexity: 14,581 trainable parameters and 1,309,760 MACs per ECG are documented in the project workflow.
 - Resource scenario: 13.10 ms and 6.55 mJ are analytical calculations under 100 MMAC/s and 0.5 W assumptions, not physical-device measurements.
